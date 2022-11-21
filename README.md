@@ -53,3 +53,14 @@ module.exports = function(eleventyConfig) {
   sizes="2rem"
 %}
 ```
+
+
+## Contentful Download Shortcode
+
+**Required properties:**
+  - `DownloadObj` The whole file object from contentful (not just the URL!)
+  
+**Basic usage:**
+```
+{% ctflDownload downloadObj = item %}
+```
