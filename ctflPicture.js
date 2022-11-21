@@ -14,7 +14,7 @@ Not required, but recommended:
 
 Optional properties:
   - formats -> The image formats generated for the picture. Defaults to ["avif", "webp", "jpg"]
-  - widths -> all the widths for the picture elements. Works with [none]. Defaults to [300, 600]
+  - widths -> all the widths for the picture elements. Works with [null]. Defaults to [300, 600]
   - sizes -> defines the sizes for the picture. Defaults to "(min-width: 22em) 30vw, 100vw"
   - classes -> add some classes
   - fit -> if you resize the image this defines how it should be resized. Defaults to "fill"
@@ -62,6 +62,7 @@ async function ctflPictureShortcode(ctflImage) {
   const sizes = ctflImage.sizes || "(min-width: 22em) 30vw, 100vw";
   const classes = ctflImage.classes || "";
   const fit = ctflImage.fit ? ctflImage.fit : "fill";
+  const focus = ctflImage.focus ? ctflImage.focus : "center";
 
   let imgWidth = 800;
   let imgHeight = 600;
@@ -87,7 +88,7 @@ async function ctflPictureShortcode(ctflImage) {
     imgUrl = "https:" + imgUrl;
   }
 
-  imgUrl = imgUrl + "?fit=" + fit + "&w=" + imgWidth + "&h=" + imgHeight;
+  imgUrl = imgUrl + "?f=" + focus + "&fit=" + fit + "&w=" + imgWidth + "&h=" + imgHeight;
 
   let options;
 
@@ -97,7 +98,7 @@ async function ctflPictureShortcode(ctflImage) {
     urlPath: "/images/ctfl",
     outputDir: "dist/images/ctfl",
     filenameFormat: function (id, src, width, format, options) {
-      return `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}.${format}`;
+      return `${imgId}-${imgWidth}x${imgHeight}-${width}w-${fit}-${focus}.${format}`;
     },
   };
 
