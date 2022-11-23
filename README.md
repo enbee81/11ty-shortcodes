@@ -58,13 +58,17 @@ module.exports = function(eleventyConfig) {
 ## Contentful Download Shortcode
 
 Use this shortcode, if you have files stored @contentful. 
-* uses 11ty fetch to cache the files
+* uses 11ty fetch to cache the file
 * writes a local copy to `dist/downloads`
-* uses the file's title as filename
+* uses the file's id as filename
 * returns a link to the local file
 
 **Required properties:**
-  - `DownloadObj` The whole file object from contentful (not just the URL!)
+  - `downloadObj` The whole file object from contentful (not just the URL!)
+  
+**Optional properties:**
+  - `title` will be used as filename for the download HTML-attribute
+  - `classes` list of classes that is applied to the link
   
 **Basic usage:**
 ```
