@@ -1,5 +1,5 @@
 # 11ty-Shortcodes
-My private collection of nunjucks shortcodes. Well so far it is just one. But let's see if there will be more.
+My private collection of nunjucks shortcodes.
 If you want to get started with Contentful and Eleventy, I highly recommend this [post](https://henry.codes/writing/how-to-use-contentful-with-eleventy/) by Henry Desroches. 
 
 ## Contentful Picture Shortcode
