@@ -1,6 +1,30 @@
 # 11ty-Shortcodes
 My private collection of nunjucks shortcodes.
-If you want to get started with Contentful and Eleventy, I highly recommend this [post](https://henry.codes/writing/how-to-use-contentful-with-eleventy/) by Henry Desroches. 
+If you want to get started with Contentful and Eleventy, I highly recommend this [post](https://henry.codes/writing/how-to-use-contentful-with-eleventy/) by Henry Desroches.
+
+--- 
+
+## Contentful Download Shortcode
+
+Use this shortcode, if you have files stored @contentful, but want to have a local copy in your project. 
+* uses 11ty fetch to cache the file
+* writes a local copy to `dist/downloads`
+* uses the file's id as filename
+* returns a link to the local file
+
+**Required properties:**
+  - `downloadObj` The whole file object from contentful (not just the URL!)
+  
+**Optional properties:**
+  - `title` will be used as filename for the download HTML-attribute
+  - `classes` list of classes that is applied to the link
+  
+**Basic usage:**
+```
+{% ctflDownload downloadObj = item %}
+```
+
+---
 
 ## Contentful Picture Shortcode
 
@@ -52,25 +76,4 @@ module.exports = function(eleventyConfig) {
   widths=[32],
   sizes="2rem"
 %}
-```
-
-
-## Contentful Download Shortcode
-
-Use this shortcode, if you have files stored @contentful. 
-* uses 11ty fetch to cache the file
-* writes a local copy to `dist/downloads`
-* uses the file's id as filename
-* returns a link to the local file
-
-**Required properties:**
-  - `downloadObj` The whole file object from contentful (not just the URL!)
-  
-**Optional properties:**
-  - `title` will be used as filename for the download HTML-attribute
-  - `classes` list of classes that is applied to the link
-  
-**Basic usage:**
-```
-{% ctflDownload downloadObj = item %}
 ```
