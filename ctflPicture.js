@@ -55,8 +55,12 @@ async function ctflPictureShortcode(ctflImage) {
   const imgId = imgObj.sys.id;
   const originSizes = imgObj.fields.file.details.image;
   const ratio = originSizes.width / originSizes.height;
-
-  const alt = ctflImage.alt || imgObj.fields.title;
+  let alt = '';
+  if (ctflImage.alt == undefined) {
+    alt = imgObj.fields.title.replace(/["']/g, '&quot;');
+  } else {
+    alt = ctflImage.alt.replace(/["']/g, '&quot;');
+  }
   const formats = ctflImage.formats || ["avif", "webp", "jpg"];
   const widths = ctflImage.widths || [300, 600];
   const sizes = ctflImage.sizes || "(min-width: 22em) 30vw, 100vw";
